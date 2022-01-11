@@ -15,6 +15,7 @@ mixin BuildPatternLists {
   static final utility = EnumToString.toList(UtilityPatterns.values);
   static final content = EnumToString.toList(ContentPatterns.values);
   static final actions = EnumToString.toList(ActionsPatterns.values);
+  static final headlineList = EnumToString.toList(PatternHeaders.values);
 
   static final List<List<String>> globalItemList = [
     onboarding,

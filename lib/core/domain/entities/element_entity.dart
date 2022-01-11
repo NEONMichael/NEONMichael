@@ -1,9 +1,9 @@
 import 'package:neon_web/core/enum/enums.dart';
 
 class ElementEntity {
-  final String? header;
+  final String header;
   final Object item;
-  ElementEntity({this.header, required this.item});
+  ElementEntity({required this.header, required this.item});
 
   @override
   String toString() {
@@ -12,20 +12,20 @@ class ElementEntity {
 }
 
 class Overlay extends ElementEntity {
-  Overlay({final String? header})
+  Overlay({ required final String header})
       : super(header: header, item: OverlayElements);
 }
 
 class Control extends ElementEntity {
-  Control({final String? header})
+  Control({required final String header})
       : super(header: header, item: ControlElements);
 }
 
 class View extends ElementEntity {
-  View({final String? header}) : super(header: header, item: ViewElements);
+  View({ required final String header}) : super(header: header, item: ViewElements);
 }
 
 class ImageElement extends ElementEntity {
-  ImageElement({final String? header})
+  ImageElement({required final String header})
       : super(header: header, item: ImageElements);
 }

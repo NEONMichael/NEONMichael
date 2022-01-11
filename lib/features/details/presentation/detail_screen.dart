@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
-import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/core/style/color_constants.dart';
 
 class DetailScreen extends StatefulWidget {
   @override

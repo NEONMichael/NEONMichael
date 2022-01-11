@@ -38,6 +38,10 @@ class _$ProjectEditingEventTearOff {
       description: description,
     );
   }
+
+  _UploadProject upload() {
+    return const _UploadProject();
+  }
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ mixin _$ProjectEditingEvent {
     required TResult Function(String name) addName,
     required TResult Function(String type) addType,
     required TResult Function(String description) addDescription,
+    required TResult Function() upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +64,7 @@ mixin _$ProjectEditingEvent {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +73,7 @@ mixin _$ProjectEditingEvent {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,6 +83,7 @@ mixin _$ProjectEditingEvent {
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +92,7 @@ mixin _$ProjectEditingEvent {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +101,7 @@ mixin _$ProjectEditingEvent {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +167,7 @@ class _$_Started implements _Started {
     required TResult Function(String name) addName,
     required TResult Function(String type) addType,
     required TResult Function(String description) addDescription,
+    required TResult Function() upload,
   }) {
     return started();
   }
@@ -168,6 +179,7 @@ class _$_Started implements _Started {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
   }) {
     return started?.call();
   }
@@ -179,6 +191,7 @@ class _$_Started implements _Started {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -194,6 +207,7 @@ class _$_Started implements _Started {
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
   }) {
     return started(this);
   }
@@ -205,6 +219,7 @@ class _$_Started implements _Started {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
   }) {
     return started?.call(this);
   }
@@ -216,6 +231,7 @@ class _$_Started implements _Started {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -296,6 +312,7 @@ class _$_AddName implements _AddName {
     required TResult Function(String name) addName,
     required TResult Function(String type) addType,
     required TResult Function(String description) addDescription,
+    required TResult Function() upload,
   }) {
     return addName(name);
   }
@@ -307,6 +324,7 @@ class _$_AddName implements _AddName {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
   }) {
     return addName?.call(name);
   }
@@ -318,6 +336,7 @@ class _$_AddName implements _AddName {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -333,6 +352,7 @@ class _$_AddName implements _AddName {
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
   }) {
     return addName(this);
   }
@@ -344,6 +364,7 @@ class _$_AddName implements _AddName {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
   }) {
     return addName?.call(this);
   }
@@ -355,6 +376,7 @@ class _$_AddName implements _AddName {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -440,6 +462,7 @@ class _$_AddType implements _AddType {
     required TResult Function(String name) addName,
     required TResult Function(String type) addType,
     required TResult Function(String description) addDescription,
+    required TResult Function() upload,
   }) {
     return addType(type);
   }
@@ -451,6 +474,7 @@ class _$_AddType implements _AddType {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
   }) {
     return addType?.call(type);
   }
@@ -462,6 +486,7 @@ class _$_AddType implements _AddType {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -477,6 +502,7 @@ class _$_AddType implements _AddType {
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
   }) {
     return addType(this);
   }
@@ -488,6 +514,7 @@ class _$_AddType implements _AddType {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
   }) {
     return addType?.call(this);
   }
@@ -499,6 +526,7 @@ class _$_AddType implements _AddType {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -587,6 +615,7 @@ class _$_AddDescription implements _AddDescription {
     required TResult Function(String name) addName,
     required TResult Function(String type) addType,
     required TResult Function(String description) addDescription,
+    required TResult Function() upload,
   }) {
     return addDescription(description);
   }
@@ -598,6 +627,7 @@ class _$_AddDescription implements _AddDescription {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
   }) {
     return addDescription?.call(description);
   }
@@ -609,6 +639,7 @@ class _$_AddDescription implements _AddDescription {
     TResult Function(String name)? addName,
     TResult Function(String type)? addType,
     TResult Function(String description)? addDescription,
+    TResult Function()? upload,
     required TResult orElse(),
   }) {
     if (addDescription != null) {
@@ -624,6 +655,7 @@ class _$_AddDescription implements _AddDescription {
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
   }) {
     return addDescription(this);
   }
@@ -635,6 +667,7 @@ class _$_AddDescription implements _AddDescription {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
   }) {
     return addDescription?.call(this);
   }
@@ -646,6 +679,7 @@ class _$_AddDescription implements _AddDescription {
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
     required TResult orElse(),
   }) {
     if (addDescription != null) {
@@ -663,6 +697,129 @@ abstract class _AddDescription implements ProjectEditingEvent {
   @JsonKey(ignore: true)
   _$AddDescriptionCopyWith<_AddDescription> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UploadProjectCopyWith<$Res> {
+  factory _$UploadProjectCopyWith(
+          _UploadProject value, $Res Function(_UploadProject) then) =
+      __$UploadProjectCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UploadProjectCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$UploadProjectCopyWith<$Res> {
+  __$UploadProjectCopyWithImpl(
+      _UploadProject _value, $Res Function(_UploadProject) _then)
+      : super(_value, (v) => _then(v as _UploadProject));
+
+  @override
+  _UploadProject get _value => super._value as _UploadProject;
+}
+
+/// @nodoc
+
+class _$_UploadProject implements _UploadProject {
+  const _$_UploadProject();
+
+  @override
+  String toString() {
+    return 'ProjectEditingEvent.upload()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _UploadProject);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
+    required TResult Function() upload,
+  }) {
+    return upload();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function()? upload,
+  }) {
+    return upload?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function()? upload,
+    required TResult orElse(),
+  }) {
+    if (upload != null) {
+      return upload();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
+  }) {
+    return upload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+  }) {
+    return upload?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+    required TResult orElse(),
+  }) {
+    if (upload != null) {
+      return upload(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadProject implements ProjectEditingEvent {
+  const factory _UploadProject() = _$_UploadProject;
 }
 
 /// @nodoc

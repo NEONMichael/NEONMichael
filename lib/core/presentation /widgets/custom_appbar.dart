@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';

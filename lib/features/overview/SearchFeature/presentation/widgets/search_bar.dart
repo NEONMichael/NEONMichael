@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart';
 
 class SearchBar extends StatelessWidget {

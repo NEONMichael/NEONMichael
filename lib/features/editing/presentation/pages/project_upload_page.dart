@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
-import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/asset_pop_up_container.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
@@ -19,7 +20,7 @@ class ProjectUploadPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UploadImageBloc uploadImageBloc = BlocProvider.of<UploadImageBloc>(context);
-
+    ProjectEditingBloc projectEditingBloc = BlocProvider.of<ProjectEditingBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return PageLayout(
       backArrow: true,
@@ -177,17 +178,23 @@ class ProjectUploadPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          height: 40,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              color: kColorLila,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Center(
-                            child: Text(
-                              "Hochladen",
-                              style: kButtonTextStyle,
+                        GestureDetector(
+                          onTap: (){
+                            projectEditingBloc.add(ProjectEditingEvent.upload());
+
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                color: kColorLila,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Hochladen",
+                                style: kButtonTextStyle,
+                              ),
                             ),
                           ),
                         )
@@ -198,14 +205,16 @@ class ProjectUploadPage extends StatelessWidget {
               ),
               state.map(
                 element: (state) => Center(
-                    child: AssetPopUpContainer(
-                  imageUrl: state.imageUrl,
-                )),
+                  child: AssetPopUpContainer(
+                    imageUrl: state.imageUrl,
+                  ),
+                ),
                 pattern: (state) => Center(
-                    child: AssetPopUpContainer(
-                  imageUrl: state.imageUrl,
-                )),
-                initial: (_) => Container(),
+                  child: AssetPopUpContainer(
+                    imageUrl: state.imageUrl,
+                  ),
+                ),
+                loading: (_) => Container(),
               )
             ]);
           },

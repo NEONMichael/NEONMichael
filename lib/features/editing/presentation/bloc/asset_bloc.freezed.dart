@@ -33,6 +33,17 @@ class _$AssetEventTearOff {
       controller: controller,
     );
   }
+
+  _AddPatternAndElements addElementsAndPattern(
+      {required List<PatternEntity> patternEntityList,
+      required List<ElementEntity> elementEntityList,
+      required int assetEntityId}) {
+    return _AddPatternAndElements(
+      patternEntityList: patternEntityList,
+      elementEntityList: elementEntityList,
+      assetEntityId: assetEntityId,
+    );
+  }
 }
 
 /// @nodoc
@@ -40,8 +51,6 @@ const $AssetEvent = _$AssetEventTearOff();
 
 /// @nodoc
 mixin _$AssetEvent {
-  DropzoneViewController get controller => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(dynamic event, DropzoneViewController controller)
@@ -49,6 +58,9 @@ mixin _$AssetEvent {
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +69,9 @@ mixin _$AssetEvent {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +80,9 @@ mixin _$AssetEvent {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,24 +90,24 @@ mixin _$AssetEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AddScreen value) addScreen,
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AssetEventCopyWith<AssetEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -98,7 +116,6 @@ abstract class $AssetEventCopyWith<$Res> {
   factory $AssetEventCopyWith(
           AssetEvent value, $Res Function(AssetEvent) then) =
       _$AssetEventCopyWithImpl<$Res>;
-  $Res call({DropzoneViewController controller});
 }
 
 /// @nodoc
@@ -108,26 +125,13 @@ class _$AssetEventCopyWithImpl<$Res> implements $AssetEventCopyWith<$Res> {
   final AssetEvent _value;
   // ignore: unused_field
   final $Res Function(AssetEvent) _then;
-
-  @override
-  $Res call({
-    Object? controller = freezed,
-  }) {
-    return _then(_value.copyWith(
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as DropzoneViewController,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$AddScreenCopyWith<$Res> implements $AssetEventCopyWith<$Res> {
+abstract class _$AddScreenCopyWith<$Res> {
   factory _$AddScreenCopyWith(
           _AddScreen value, $Res Function(_AddScreen) then) =
       __$AddScreenCopyWithImpl<$Res>;
-  @override
   $Res call({dynamic event, DropzoneViewController controller});
 }
 
@@ -202,6 +206,9 @@ class _$_AddScreen implements _AddScreen {
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
   }) {
     return addScreen(event, controller);
   }
@@ -213,6 +220,9 @@ class _$_AddScreen implements _AddScreen {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
   }) {
     return addScreen?.call(event, controller);
   }
@@ -224,6 +234,9 @@ class _$_AddScreen implements _AddScreen {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
     required TResult orElse(),
   }) {
     if (addScreen != null) {
@@ -237,6 +250,8 @@ class _$_AddScreen implements _AddScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_AddScreen value) addScreen,
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
   }) {
     return addScreen(this);
   }
@@ -246,6 +261,7 @@ class _$_AddScreen implements _AddScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
   }) {
     return addScreen?.call(this);
   }
@@ -255,6 +271,7 @@ class _$_AddScreen implements _AddScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
     required TResult orElse(),
   }) {
     if (addScreen != null) {
@@ -270,21 +287,17 @@ abstract class _AddScreen implements AssetEvent {
       required DropzoneViewController controller}) = _$_AddScreen;
 
   dynamic get event;
-  @override
   DropzoneViewController get controller;
-  @override
   @JsonKey(ignore: true)
   _$AddScreenCopyWith<_AddScreen> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AddMultipleScreensCopyWith<$Res>
-    implements $AssetEventCopyWith<$Res> {
+abstract class _$AddMultipleScreensCopyWith<$Res> {
   factory _$AddMultipleScreensCopyWith(
           _AddMultipleScreens value, $Res Function(_AddMultipleScreens) then) =
       __$AddMultipleScreensCopyWithImpl<$Res>;
-  @override
   $Res call({List<dynamic> event, DropzoneViewController controller});
 }
 
@@ -361,6 +374,9 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
   }) {
     return addMultipleScreens(event, controller);
   }
@@ -372,6 +388,9 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
   }) {
     return addMultipleScreens?.call(event, controller);
   }
@@ -383,6 +402,9 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
         addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
     required TResult orElse(),
   }) {
     if (addMultipleScreens != null) {
@@ -396,6 +418,8 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   TResult map<TResult extends Object?>({
     required TResult Function(_AddScreen value) addScreen,
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
   }) {
     return addMultipleScreens(this);
   }
@@ -405,6 +429,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
   }) {
     return addMultipleScreens?.call(this);
   }
@@ -414,6 +439,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
     required TResult orElse(),
   }) {
     if (addMultipleScreens != null) {
@@ -429,11 +455,200 @@ abstract class _AddMultipleScreens implements AssetEvent {
       required DropzoneViewController controller}) = _$_AddMultipleScreens;
 
   List<dynamic> get event;
-  @override
   DropzoneViewController get controller;
-  @override
   @JsonKey(ignore: true)
   _$AddMultipleScreensCopyWith<_AddMultipleScreens> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddPatternAndElementsCopyWith<$Res> {
+  factory _$AddPatternAndElementsCopyWith(_AddPatternAndElements value,
+          $Res Function(_AddPatternAndElements) then) =
+      __$AddPatternAndElementsCopyWithImpl<$Res>;
+  $Res call(
+      {List<PatternEntity> patternEntityList,
+      List<ElementEntity> elementEntityList,
+      int assetEntityId});
+}
+
+/// @nodoc
+class __$AddPatternAndElementsCopyWithImpl<$Res>
+    extends _$AssetEventCopyWithImpl<$Res>
+    implements _$AddPatternAndElementsCopyWith<$Res> {
+  __$AddPatternAndElementsCopyWithImpl(_AddPatternAndElements _value,
+      $Res Function(_AddPatternAndElements) _then)
+      : super(_value, (v) => _then(v as _AddPatternAndElements));
+
+  @override
+  _AddPatternAndElements get _value => super._value as _AddPatternAndElements;
+
+  @override
+  $Res call({
+    Object? patternEntityList = freezed,
+    Object? elementEntityList = freezed,
+    Object? assetEntityId = freezed,
+  }) {
+    return _then(_AddPatternAndElements(
+      patternEntityList: patternEntityList == freezed
+          ? _value.patternEntityList
+          : patternEntityList // ignore: cast_nullable_to_non_nullable
+              as List<PatternEntity>,
+      elementEntityList: elementEntityList == freezed
+          ? _value.elementEntityList
+          : elementEntityList // ignore: cast_nullable_to_non_nullable
+              as List<ElementEntity>,
+      assetEntityId: assetEntityId == freezed
+          ? _value.assetEntityId
+          : assetEntityId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddPatternAndElements implements _AddPatternAndElements {
+  const _$_AddPatternAndElements(
+      {required this.patternEntityList,
+      required this.elementEntityList,
+      required this.assetEntityId});
+
+  @override
+  final List<PatternEntity> patternEntityList;
+  @override
+  final List<ElementEntity> elementEntityList;
+  @override
+  final int assetEntityId;
+
+  @override
+  String toString() {
+    return 'AssetEvent.addElementsAndPattern(patternEntityList: $patternEntityList, elementEntityList: $elementEntityList, assetEntityId: $assetEntityId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddPatternAndElements &&
+            const DeepCollectionEquality()
+                .equals(other.patternEntityList, patternEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.elementEntityList, elementEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntityId, assetEntityId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(patternEntityList),
+      const DeepCollectionEquality().hash(elementEntityList),
+      const DeepCollectionEquality().hash(assetEntityId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddPatternAndElementsCopyWith<_AddPatternAndElements> get copyWith =>
+      __$AddPatternAndElementsCopyWithImpl<_AddPatternAndElements>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic event, DropzoneViewController controller)
+        addScreen,
+    required TResult Function(
+            List<dynamic> event, DropzoneViewController controller)
+        addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
+  }) {
+    return addElementsAndPattern(
+        patternEntityList, elementEntityList, assetEntityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(dynamic event, DropzoneViewController controller)?
+        addScreen,
+    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+  }) {
+    return addElementsAndPattern?.call(
+        patternEntityList, elementEntityList, assetEntityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic event, DropzoneViewController controller)?
+        addScreen,
+    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    required TResult orElse(),
+  }) {
+    if (addElementsAndPattern != null) {
+      return addElementsAndPattern(
+          patternEntityList, elementEntityList, assetEntityId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddScreen value) addScreen,
+    required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
+  }) {
+    return addElementsAndPattern(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+  }) {
+    return addElementsAndPattern?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    required TResult orElse(),
+  }) {
+    if (addElementsAndPattern != null) {
+      return addElementsAndPattern(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddPatternAndElements implements AssetEvent {
+  const factory _AddPatternAndElements(
+      {required List<PatternEntity> patternEntityList,
+      required List<ElementEntity> elementEntityList,
+      required int assetEntityId}) = _$_AddPatternAndElements;
+
+  List<PatternEntity> get patternEntityList;
+  List<ElementEntity> get elementEntityList;
+  int get assetEntityId;
+  @JsonKey(ignore: true)
+  _$AddPatternAndElementsCopyWith<_AddPatternAndElements> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

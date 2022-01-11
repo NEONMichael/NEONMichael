@@ -6,6 +6,7 @@ class ProjectEditingEvent with _$ProjectEditingEvent {
   const factory ProjectEditingEvent.addName({required String name}) =  _AddName;
   const factory ProjectEditingEvent.addType({required String type}) =  _AddType;
   const factory ProjectEditingEvent.addDescription({required String description}) =  _AddDescription;
+  const factory ProjectEditingEvent.upload() =  _UploadProject;
 
   
 }

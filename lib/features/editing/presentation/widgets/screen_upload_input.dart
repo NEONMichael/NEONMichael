@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:neon_web/export_core_files.dart';
+import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/core/style/style.dart';
 
-class ScreenUploadInput extends StatefulWidget {
+class ScreenUploadInput extends StatelessWidget {
   final String inputHeader;
-  final List<String> matchingCategories;
+  final List matchingCategoriesList;
 
   const ScreenUploadInput(
-      {required this.inputHeader, required this.matchingCategories, Key? key})
+      {required this.matchingCategoriesList,
+      required this.inputHeader,
+      Key? key})
       : super(key: key);
 
-  @override
-  State<ScreenUploadInput> createState() => _ScreenUploadInputState();
-}
-
-class _ScreenUploadInputState extends State<ScreenUploadInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,37 +21,18 @@ class _ScreenUploadInputState extends State<ScreenUploadInput> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(widget.inputHeader),
-          SizedBox(
-            height: UIHelper().verticalSpaceSmall(context),
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-                maxWidth: 150, maxHeight: 30, minWidth: 30, minHeight: 0),
-            child: TextFormField(
-              maxLines: 1,
-              decoration: InputDecoration(
-                border: new OutlineInputBorder(
-                    borderSide: BorderSide(color: kColorGreyBorder)),
-                contentPadding: EdgeInsets.all(8),
-              ),
-              textAlignVertical: TextAlignVertical.center,
-              textAlign: TextAlign.left,
-            ),
-          ),
-          SizedBox(
-            height: UIHelper().verticalSpaceSmall(context),
-          ),
+          Text(inputHeader),
+          verticalSpaceSmall(context: context),
           Container(
             width: 150,
             height: 50,
             child: GridView.builder(
-              itemCount: widget.matchingCategories.length,
+              itemCount: matchingCategoriesList.length,
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 75, mainAxisExtent: 15),
+                  maxCrossAxisExtent: 100, mainAxisExtent: 20),
               itemBuilder: (context, index) => Text(
-                widget.matchingCategories.elementAt(index),
-                style: TextStyle(fontSize: 10, color: kColorLila),
+                matchingCategoriesList.elementAt(index).toString(),
+                style: TextStyle(fontSize: 12, color: kColorLila),
               ),
             ),
           ),

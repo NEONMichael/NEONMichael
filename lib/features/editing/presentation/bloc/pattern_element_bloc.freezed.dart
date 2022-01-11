@@ -17,27 +17,35 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PatternElementEventTearOff {
   const _$PatternElementEventTearOff();
 
-  _AddPattern addPattern({required String pattern}) {
+  _AddPattern addPattern(
+      {required PatternEntity patternEntity, required String imageUrl}) {
     return _AddPattern(
-      pattern: pattern,
+      patternEntity: patternEntity,
+      imageUrl: imageUrl,
     );
   }
 
-  _RemovePatter removePattern({required String pattern}) {
+  _RemovePatter removePattern(
+      {required PatternEntity patternEntity, required String imageUrl}) {
     return _RemovePatter(
-      pattern: pattern,
+      patternEntity: patternEntity,
+      imageUrl: imageUrl,
     );
   }
 
-  _AddElement addElement({required String pattern}) {
+  _AddElement addElement(
+      {required ElementEntity elementEntity, required String imageUrl}) {
     return _AddElement(
-      pattern: pattern,
+      elementEntity: elementEntity,
+      imageUrl: imageUrl,
     );
   }
 
-  _RemoveElement removeElement({required String pattern}) {
+  _RemoveElement removeElement(
+      {required ElementEntity elementEntity, required String imageUrl}) {
     return _RemoveElement(
-      pattern: pattern,
+      elementEntity: elementEntity,
+      imageUrl: imageUrl,
     );
   }
 
@@ -52,6 +60,17 @@ class _$PatternElementEventTearOff {
       imageUrl: imageUrl,
     );
   }
+
+  _AddExistingDataToBloc addExistingDataToBloc(
+      {required AssetEntity assetEntity}) {
+    return _AddExistingDataToBloc(
+      assetEntity: assetEntity,
+    );
+  }
+
+  _ResetBloc resetBloc() {
+    return const _ResetBloc();
+  }
 }
 
 /// @nodoc
@@ -61,32 +80,46 @@ const $PatternElementEvent = _$PatternElementEventTearOff();
 mixin _$PatternElementEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,6 +131,9 @@ mixin _$PatternElementEvent {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +144,8 @@ mixin _$PatternElementEvent {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -118,6 +156,8 @@ mixin _$PatternElementEvent {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,7 +185,7 @@ abstract class _$AddPatternCopyWith<$Res> {
   factory _$AddPatternCopyWith(
           _AddPattern value, $Res Function(_AddPattern) then) =
       __$AddPatternCopyWithImpl<$Res>;
-  $Res call({String pattern});
+  $Res call({PatternEntity patternEntity, String imageUrl});
 }
 
 /// @nodoc
@@ -161,12 +201,17 @@ class __$AddPatternCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pattern = freezed,
+    Object? patternEntity = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_AddPattern(
-      pattern: pattern == freezed
-          ? _value.pattern
-          : pattern // ignore: cast_nullable_to_non_nullable
+      patternEntity: patternEntity == freezed
+          ? _value.patternEntity
+          : patternEntity // ignore: cast_nullable_to_non_nullable
+              as PatternEntity,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -175,14 +220,16 @@ class __$AddPatternCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddPattern implements _AddPattern {
-  const _$_AddPattern({required this.pattern});
+  const _$_AddPattern({required this.patternEntity, required this.imageUrl});
 
   @override
-  final String pattern;
+  final PatternEntity patternEntity;
+  @override
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addPattern(pattern: $pattern)';
+    return 'PatternElementEvent.addPattern(patternEntity: $patternEntity, imageUrl: $imageUrl)';
   }
 
   @override
@@ -190,12 +237,16 @@ class _$_AddPattern implements _AddPattern {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AddPattern &&
-            const DeepCollectionEquality().equals(other.pattern, pattern));
+            const DeepCollectionEquality()
+                .equals(other.patternEntity, patternEntity) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(patternEntity),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -205,42 +256,56 @@ class _$_AddPattern implements _AddPattern {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
-    return addPattern(pattern);
+    return addPattern(patternEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
-    return addPattern?.call(pattern);
+    return addPattern?.call(patternEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (addPattern != null) {
-      return addPattern(pattern);
+      return addPattern(patternEntity, imageUrl);
     }
     return orElse();
   }
@@ -254,6 +319,9 @@ class _$_AddPattern implements _AddPattern {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return addPattern(this);
   }
@@ -267,6 +335,8 @@ class _$_AddPattern implements _AddPattern {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return addPattern?.call(this);
   }
@@ -280,6 +350,8 @@ class _$_AddPattern implements _AddPattern {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (addPattern != null) {
@@ -290,9 +362,12 @@ class _$_AddPattern implements _AddPattern {
 }
 
 abstract class _AddPattern implements PatternElementEvent {
-  const factory _AddPattern({required String pattern}) = _$_AddPattern;
+  const factory _AddPattern(
+      {required PatternEntity patternEntity,
+      required String imageUrl}) = _$_AddPattern;
 
-  String get pattern;
+  PatternEntity get patternEntity;
+  String get imageUrl;
   @JsonKey(ignore: true)
   _$AddPatternCopyWith<_AddPattern> get copyWith =>
       throw _privateConstructorUsedError;
@@ -303,7 +378,7 @@ abstract class _$RemovePatterCopyWith<$Res> {
   factory _$RemovePatterCopyWith(
           _RemovePatter value, $Res Function(_RemovePatter) then) =
       __$RemovePatterCopyWithImpl<$Res>;
-  $Res call({String pattern});
+  $Res call({PatternEntity patternEntity, String imageUrl});
 }
 
 /// @nodoc
@@ -319,12 +394,17 @@ class __$RemovePatterCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pattern = freezed,
+    Object? patternEntity = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_RemovePatter(
-      pattern: pattern == freezed
-          ? _value.pattern
-          : pattern // ignore: cast_nullable_to_non_nullable
+      patternEntity: patternEntity == freezed
+          ? _value.patternEntity
+          : patternEntity // ignore: cast_nullable_to_non_nullable
+              as PatternEntity,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -333,14 +413,16 @@ class __$RemovePatterCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RemovePatter implements _RemovePatter {
-  const _$_RemovePatter({required this.pattern});
+  const _$_RemovePatter({required this.patternEntity, required this.imageUrl});
 
   @override
-  final String pattern;
+  final PatternEntity patternEntity;
+  @override
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removePattern(pattern: $pattern)';
+    return 'PatternElementEvent.removePattern(patternEntity: $patternEntity, imageUrl: $imageUrl)';
   }
 
   @override
@@ -348,12 +430,16 @@ class _$_RemovePatter implements _RemovePatter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RemovePatter &&
-            const DeepCollectionEquality().equals(other.pattern, pattern));
+            const DeepCollectionEquality()
+                .equals(other.patternEntity, patternEntity) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(patternEntity),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -363,42 +449,56 @@ class _$_RemovePatter implements _RemovePatter {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
-    return removePattern(pattern);
+    return removePattern(patternEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
-    return removePattern?.call(pattern);
+    return removePattern?.call(patternEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (removePattern != null) {
-      return removePattern(pattern);
+      return removePattern(patternEntity, imageUrl);
     }
     return orElse();
   }
@@ -412,6 +512,9 @@ class _$_RemovePatter implements _RemovePatter {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return removePattern(this);
   }
@@ -425,6 +528,8 @@ class _$_RemovePatter implements _RemovePatter {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return removePattern?.call(this);
   }
@@ -438,6 +543,8 @@ class _$_RemovePatter implements _RemovePatter {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (removePattern != null) {
@@ -448,9 +555,12 @@ class _$_RemovePatter implements _RemovePatter {
 }
 
 abstract class _RemovePatter implements PatternElementEvent {
-  const factory _RemovePatter({required String pattern}) = _$_RemovePatter;
+  const factory _RemovePatter(
+      {required PatternEntity patternEntity,
+      required String imageUrl}) = _$_RemovePatter;
 
-  String get pattern;
+  PatternEntity get patternEntity;
+  String get imageUrl;
   @JsonKey(ignore: true)
   _$RemovePatterCopyWith<_RemovePatter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -461,7 +571,7 @@ abstract class _$AddElementCopyWith<$Res> {
   factory _$AddElementCopyWith(
           _AddElement value, $Res Function(_AddElement) then) =
       __$AddElementCopyWithImpl<$Res>;
-  $Res call({String pattern});
+  $Res call({ElementEntity elementEntity, String imageUrl});
 }
 
 /// @nodoc
@@ -477,12 +587,17 @@ class __$AddElementCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pattern = freezed,
+    Object? elementEntity = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_AddElement(
-      pattern: pattern == freezed
-          ? _value.pattern
-          : pattern // ignore: cast_nullable_to_non_nullable
+      elementEntity: elementEntity == freezed
+          ? _value.elementEntity
+          : elementEntity // ignore: cast_nullable_to_non_nullable
+              as ElementEntity,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -491,14 +606,16 @@ class __$AddElementCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddElement implements _AddElement {
-  const _$_AddElement({required this.pattern});
+  const _$_AddElement({required this.elementEntity, required this.imageUrl});
 
   @override
-  final String pattern;
+  final ElementEntity elementEntity;
+  @override
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addElement(pattern: $pattern)';
+    return 'PatternElementEvent.addElement(elementEntity: $elementEntity, imageUrl: $imageUrl)';
   }
 
   @override
@@ -506,12 +623,16 @@ class _$_AddElement implements _AddElement {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AddElement &&
-            const DeepCollectionEquality().equals(other.pattern, pattern));
+            const DeepCollectionEquality()
+                .equals(other.elementEntity, elementEntity) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(elementEntity),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -521,42 +642,56 @@ class _$_AddElement implements _AddElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
-    return addElement(pattern);
+    return addElement(elementEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
-    return addElement?.call(pattern);
+    return addElement?.call(elementEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (addElement != null) {
-      return addElement(pattern);
+      return addElement(elementEntity, imageUrl);
     }
     return orElse();
   }
@@ -570,6 +705,9 @@ class _$_AddElement implements _AddElement {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return addElement(this);
   }
@@ -583,6 +721,8 @@ class _$_AddElement implements _AddElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return addElement?.call(this);
   }
@@ -596,6 +736,8 @@ class _$_AddElement implements _AddElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (addElement != null) {
@@ -606,9 +748,12 @@ class _$_AddElement implements _AddElement {
 }
 
 abstract class _AddElement implements PatternElementEvent {
-  const factory _AddElement({required String pattern}) = _$_AddElement;
+  const factory _AddElement(
+      {required ElementEntity elementEntity,
+      required String imageUrl}) = _$_AddElement;
 
-  String get pattern;
+  ElementEntity get elementEntity;
+  String get imageUrl;
   @JsonKey(ignore: true)
   _$AddElementCopyWith<_AddElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -619,7 +764,7 @@ abstract class _$RemoveElementCopyWith<$Res> {
   factory _$RemoveElementCopyWith(
           _RemoveElement value, $Res Function(_RemoveElement) then) =
       __$RemoveElementCopyWithImpl<$Res>;
-  $Res call({String pattern});
+  $Res call({ElementEntity elementEntity, String imageUrl});
 }
 
 /// @nodoc
@@ -635,12 +780,17 @@ class __$RemoveElementCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pattern = freezed,
+    Object? elementEntity = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_RemoveElement(
-      pattern: pattern == freezed
-          ? _value.pattern
-          : pattern // ignore: cast_nullable_to_non_nullable
+      elementEntity: elementEntity == freezed
+          ? _value.elementEntity
+          : elementEntity // ignore: cast_nullable_to_non_nullable
+              as ElementEntity,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -649,14 +799,16 @@ class __$RemoveElementCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RemoveElement implements _RemoveElement {
-  const _$_RemoveElement({required this.pattern});
+  const _$_RemoveElement({required this.elementEntity, required this.imageUrl});
 
   @override
-  final String pattern;
+  final ElementEntity elementEntity;
+  @override
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removeElement(pattern: $pattern)';
+    return 'PatternElementEvent.removeElement(elementEntity: $elementEntity, imageUrl: $imageUrl)';
   }
 
   @override
@@ -664,12 +816,16 @@ class _$_RemoveElement implements _RemoveElement {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RemoveElement &&
-            const DeepCollectionEquality().equals(other.pattern, pattern));
+            const DeepCollectionEquality()
+                .equals(other.elementEntity, elementEntity) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(elementEntity),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -679,42 +835,56 @@ class _$_RemoveElement implements _RemoveElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
-    return removeElement(pattern);
+    return removeElement(elementEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
-    return removeElement?.call(pattern);
+    return removeElement?.call(elementEntity, imageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (removeElement != null) {
-      return removeElement(pattern);
+      return removeElement(elementEntity, imageUrl);
     }
     return orElse();
   }
@@ -728,6 +898,9 @@ class _$_RemoveElement implements _RemoveElement {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return removeElement(this);
   }
@@ -741,6 +914,8 @@ class _$_RemoveElement implements _RemoveElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return removeElement?.call(this);
   }
@@ -754,6 +929,8 @@ class _$_RemoveElement implements _RemoveElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (removeElement != null) {
@@ -764,9 +941,12 @@ class _$_RemoveElement implements _RemoveElement {
 }
 
 abstract class _RemoveElement implements PatternElementEvent {
-  const factory _RemoveElement({required String pattern}) = _$_RemoveElement;
+  const factory _RemoveElement(
+      {required ElementEntity elementEntity,
+      required String imageUrl}) = _$_RemoveElement;
 
-  String get pattern;
+  ElementEntity get elementEntity;
+  String get imageUrl;
   @JsonKey(ignore: true)
   _$RemoveElementCopyWith<_RemoveElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -838,12 +1018,18 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
     return changeToPatternView(imageUrl);
   }
@@ -851,12 +1037,16 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
     return changeToPatternView?.call(imageUrl);
   }
@@ -864,12 +1054,16 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToPatternView != null) {
@@ -887,6 +1081,9 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return changeToPatternView(this);
   }
@@ -900,6 +1097,8 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return changeToPatternView?.call(this);
   }
@@ -913,6 +1112,8 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToPatternView != null) {
@@ -998,12 +1199,18 @@ class _$_ChangeToElementView implements _ChangeToElementView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pattern) addPattern,
-    required TResult Function(String pattern) removePattern,
-    required TResult Function(String pattern) addElement,
-    required TResult Function(String pattern) removeElement,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
   }) {
     return changeToElementView(imageUrl);
   }
@@ -1011,12 +1218,16 @@ class _$_ChangeToElementView implements _ChangeToElementView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
   }) {
     return changeToElementView?.call(imageUrl);
   }
@@ -1024,12 +1235,16 @@ class _$_ChangeToElementView implements _ChangeToElementView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pattern)? addPattern,
-    TResult Function(String pattern)? removePattern,
-    TResult Function(String pattern)? addElement,
-    TResult Function(String pattern)? removeElement,
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToElementView != null) {
@@ -1047,6 +1262,9 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return changeToElementView(this);
   }
@@ -1060,6 +1278,8 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return changeToElementView?.call(this);
   }
@@ -1073,6 +1293,8 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToElementView != null) {
@@ -1093,22 +1315,372 @@ abstract class _ChangeToElementView implements PatternElementEvent {
 }
 
 /// @nodoc
+abstract class _$AddExistingDataToBlocCopyWith<$Res> {
+  factory _$AddExistingDataToBlocCopyWith(_AddExistingDataToBloc value,
+          $Res Function(_AddExistingDataToBloc) then) =
+      __$AddExistingDataToBlocCopyWithImpl<$Res>;
+  $Res call({AssetEntity assetEntity});
+
+  $AssetEntityCopyWith<$Res> get assetEntity;
+}
+
+/// @nodoc
+class __$AddExistingDataToBlocCopyWithImpl<$Res>
+    extends _$PatternElementEventCopyWithImpl<$Res>
+    implements _$AddExistingDataToBlocCopyWith<$Res> {
+  __$AddExistingDataToBlocCopyWithImpl(_AddExistingDataToBloc _value,
+      $Res Function(_AddExistingDataToBloc) _then)
+      : super(_value, (v) => _then(v as _AddExistingDataToBloc));
+
+  @override
+  _AddExistingDataToBloc get _value => super._value as _AddExistingDataToBloc;
+
+  @override
+  $Res call({
+    Object? assetEntity = freezed,
+  }) {
+    return _then(_AddExistingDataToBloc(
+      assetEntity: assetEntity == freezed
+          ? _value.assetEntity
+          : assetEntity // ignore: cast_nullable_to_non_nullable
+              as AssetEntity,
+    ));
+  }
+
+  @override
+  $AssetEntityCopyWith<$Res> get assetEntity {
+    return $AssetEntityCopyWith<$Res>(_value.assetEntity, (value) {
+      return _then(_value.copyWith(assetEntity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
+  const _$_AddExistingDataToBloc({required this.assetEntity});
+
+  @override
+  final AssetEntity assetEntity;
+
+  @override
+  String toString() {
+    return 'PatternElementEvent.addExistingDataToBloc(assetEntity: $assetEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddExistingDataToBloc &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntity, assetEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(assetEntity));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddExistingDataToBlocCopyWith<_AddExistingDataToBloc> get copyWith =>
+      __$AddExistingDataToBlocCopyWithImpl<_AddExistingDataToBloc>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
+    required TResult Function(String imageUrl) changeToPatternView,
+    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
+  }) {
+    return addExistingDataToBloc(assetEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
+    TResult Function(String imageUrl)? changeToPatternView,
+    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
+  }) {
+    return addExistingDataToBloc?.call(assetEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
+    TResult Function(String imageUrl)? changeToPatternView,
+    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
+    required TResult orElse(),
+  }) {
+    if (addExistingDataToBloc != null) {
+      return addExistingDataToBloc(assetEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddPattern value) addPattern,
+    required TResult Function(_RemovePatter value) removePattern,
+    required TResult Function(_AddElement value) addElement,
+    required TResult Function(_RemoveElement value) removeElement,
+    required TResult Function(_ChangeToPatternView value) changeToPatternView,
+    required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
+  }) {
+    return addExistingDataToBloc(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddPattern value)? addPattern,
+    TResult Function(_RemovePatter value)? removePattern,
+    TResult Function(_AddElement value)? addElement,
+    TResult Function(_RemoveElement value)? removeElement,
+    TResult Function(_ChangeToPatternView value)? changeToPatternView,
+    TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
+  }) {
+    return addExistingDataToBloc?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddPattern value)? addPattern,
+    TResult Function(_RemovePatter value)? removePattern,
+    TResult Function(_AddElement value)? addElement,
+    TResult Function(_RemoveElement value)? removeElement,
+    TResult Function(_ChangeToPatternView value)? changeToPatternView,
+    TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
+    required TResult orElse(),
+  }) {
+    if (addExistingDataToBloc != null) {
+      return addExistingDataToBloc(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddExistingDataToBloc implements PatternElementEvent {
+  const factory _AddExistingDataToBloc({required AssetEntity assetEntity}) =
+      _$_AddExistingDataToBloc;
+
+  AssetEntity get assetEntity;
+  @JsonKey(ignore: true)
+  _$AddExistingDataToBlocCopyWith<_AddExistingDataToBloc> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ResetBlocCopyWith<$Res> {
+  factory _$ResetBlocCopyWith(
+          _ResetBloc value, $Res Function(_ResetBloc) then) =
+      __$ResetBlocCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetBlocCopyWithImpl<$Res>
+    extends _$PatternElementEventCopyWithImpl<$Res>
+    implements _$ResetBlocCopyWith<$Res> {
+  __$ResetBlocCopyWithImpl(_ResetBloc _value, $Res Function(_ResetBloc) _then)
+      : super(_value, (v) => _then(v as _ResetBloc));
+
+  @override
+  _ResetBloc get _value => super._value as _ResetBloc;
+}
+
+/// @nodoc
+
+class _$_ResetBloc implements _ResetBloc {
+  const _$_ResetBloc();
+
+  @override
+  String toString() {
+    return 'PatternElementEvent.resetBloc()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ResetBloc);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        addPattern,
+    required TResult Function(PatternEntity patternEntity, String imageUrl)
+        removePattern,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        addElement,
+    required TResult Function(ElementEntity elementEntity, String imageUrl)
+        removeElement,
+    required TResult Function(String imageUrl) changeToPatternView,
+    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
+    required TResult Function() resetBloc,
+  }) {
+    return resetBloc();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
+    TResult Function(String imageUrl)? changeToPatternView,
+    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
+  }) {
+    return resetBloc?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
+    TResult Function(PatternEntity patternEntity, String imageUrl)?
+        removePattern,
+    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
+    TResult Function(ElementEntity elementEntity, String imageUrl)?
+        removeElement,
+    TResult Function(String imageUrl)? changeToPatternView,
+    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
+    TResult Function()? resetBloc,
+    required TResult orElse(),
+  }) {
+    if (resetBloc != null) {
+      return resetBloc();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddPattern value) addPattern,
+    required TResult Function(_RemovePatter value) removePattern,
+    required TResult Function(_AddElement value) addElement,
+    required TResult Function(_RemoveElement value) removeElement,
+    required TResult Function(_ChangeToPatternView value) changeToPatternView,
+    required TResult Function(_ChangeToElementView value) changeToElementView,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
+    required TResult Function(_ResetBloc value) resetBloc,
+  }) {
+    return resetBloc(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddPattern value)? addPattern,
+    TResult Function(_RemovePatter value)? removePattern,
+    TResult Function(_AddElement value)? addElement,
+    TResult Function(_RemoveElement value)? removeElement,
+    TResult Function(_ChangeToPatternView value)? changeToPatternView,
+    TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
+  }) {
+    return resetBloc?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddPattern value)? addPattern,
+    TResult Function(_RemovePatter value)? removePattern,
+    TResult Function(_AddElement value)? addElement,
+    TResult Function(_RemoveElement value)? removeElement,
+    TResult Function(_ChangeToPatternView value)? changeToPatternView,
+    TResult Function(_ChangeToElementView value)? changeToElementView,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
+    TResult Function(_ResetBloc value)? resetBloc,
+    required TResult orElse(),
+  }) {
+    if (resetBloc != null) {
+      return resetBloc(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetBloc implements PatternElementEvent {
+  const factory _ResetBloc() = _$_ResetBloc;
+}
+
+/// @nodoc
 class _$PatternElementStateTearOff {
   const _$PatternElementStateTearOff();
 
-  _PatternView pattern({required String imageUrl}) {
+  _PatternView pattern(
+      {required String imageUrl,
+      required List<PatternEntity> patternEntityList,
+      required List<ElementEntity> elementEntityList}) {
     return _PatternView(
       imageUrl: imageUrl,
+      patternEntityList: patternEntityList,
+      elementEntityList: elementEntityList,
     );
   }
 
-  _Initial initial() {
-    return const _Initial();
+  _Loading loading() {
+    return const _Loading();
   }
 
-  _ElementView element({required String imageUrl}) {
+  _ElementView element(
+      {required String imageUrl,
+      required List<ElementEntity> elementEntityList,
+      required List<PatternEntity> patternEntityList}) {
     return _ElementView(
       imageUrl: imageUrl,
+      elementEntityList: elementEntityList,
+      patternEntityList: patternEntityList,
     );
   }
 }
@@ -1120,44 +1692,60 @@ const $PatternElementState = _$PatternElementStateTearOff();
 mixin _$PatternElementState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl) pattern,
-    required TResult Function() initial,
-    required TResult Function(String imageUrl) element,
+    required TResult Function(
+            String imageUrl,
+            List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)
+        pattern,
+    required TResult Function() loading,
+    required TResult Function(
+            String imageUrl,
+            List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)
+        element,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PatternView value) pattern,
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ElementView value) element,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
     required TResult orElse(),
   }) =>
@@ -1186,7 +1774,10 @@ abstract class _$PatternViewCopyWith<$Res> {
   factory _$PatternViewCopyWith(
           _PatternView value, $Res Function(_PatternView) then) =
       __$PatternViewCopyWithImpl<$Res>;
-  $Res call({String imageUrl});
+  $Res call(
+      {String imageUrl,
+      List<PatternEntity> patternEntityList,
+      List<ElementEntity> elementEntityList});
 }
 
 /// @nodoc
@@ -1203,12 +1794,22 @@ class __$PatternViewCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imageUrl = freezed,
+    Object? patternEntityList = freezed,
+    Object? elementEntityList = freezed,
   }) {
     return _then(_PatternView(
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      patternEntityList: patternEntityList == freezed
+          ? _value.patternEntityList
+          : patternEntityList // ignore: cast_nullable_to_non_nullable
+              as List<PatternEntity>,
+      elementEntityList: elementEntityList == freezed
+          ? _value.elementEntityList
+          : elementEntityList // ignore: cast_nullable_to_non_nullable
+              as List<ElementEntity>,
     ));
   }
 }
@@ -1216,14 +1817,21 @@ class __$PatternViewCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PatternView implements _PatternView {
-  const _$_PatternView({required this.imageUrl});
+  const _$_PatternView(
+      {required this.imageUrl,
+      required this.patternEntityList,
+      required this.elementEntityList});
 
   @override
   final String imageUrl;
+  @override
+  final List<PatternEntity> patternEntityList;
+  @override
+  final List<ElementEntity> elementEntityList;
 
   @override
   String toString() {
-    return 'PatternElementState.pattern(imageUrl: $imageUrl)';
+    return 'PatternElementState.pattern(imageUrl: $imageUrl, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList)';
   }
 
   @override
@@ -1231,12 +1839,19 @@ class _$_PatternView implements _PatternView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PatternView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.patternEntityList, patternEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.elementEntityList, elementEntityList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageUrl));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(patternEntityList),
+      const DeepCollectionEquality().hash(elementEntityList));
 
   @JsonKey(ignore: true)
   @override
@@ -1246,33 +1861,49 @@ class _$_PatternView implements _PatternView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl) pattern,
-    required TResult Function() initial,
-    required TResult Function(String imageUrl) element,
+    required TResult Function(
+            String imageUrl,
+            List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)
+        pattern,
+    required TResult Function() loading,
+    required TResult Function(
+            String imageUrl,
+            List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)
+        element,
   }) {
-    return pattern(imageUrl);
+    return pattern(imageUrl, patternEntityList, elementEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
   }) {
-    return pattern?.call(imageUrl);
+    return pattern?.call(imageUrl, patternEntityList, elementEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
     required TResult orElse(),
   }) {
     if (pattern != null) {
-      return pattern(imageUrl);
+      return pattern(imageUrl, patternEntityList, elementEntityList);
     }
     return orElse();
   }
@@ -1281,7 +1912,7 @@ class _$_PatternView implements _PatternView {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PatternView value) pattern,
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ElementView value) element,
   }) {
     return pattern(this);
@@ -1291,7 +1922,7 @@ class _$_PatternView implements _PatternView {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
   }) {
     return pattern?.call(this);
@@ -1301,7 +1932,7 @@ class _$_PatternView implements _PatternView {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
     required TResult orElse(),
   }) {
@@ -1313,45 +1944,50 @@ class _$_PatternView implements _PatternView {
 }
 
 abstract class _PatternView implements PatternElementState {
-  const factory _PatternView({required String imageUrl}) = _$_PatternView;
+  const factory _PatternView(
+      {required String imageUrl,
+      required List<PatternEntity> patternEntityList,
+      required List<ElementEntity> elementEntityList}) = _$_PatternView;
 
   String get imageUrl;
+  List<PatternEntity> get patternEntityList;
+  List<ElementEntity> get elementEntityList;
   @JsonKey(ignore: true)
   _$PatternViewCopyWith<_PatternView> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res>
     extends _$PatternElementStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _Loading get _value => super._value as _Loading;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
-    return 'PatternElementState.initial()';
+    return 'PatternElementState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -1360,33 +1996,49 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl) pattern,
-    required TResult Function() initial,
-    required TResult Function(String imageUrl) element,
+    required TResult Function(
+            String imageUrl,
+            List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)
+        pattern,
+    required TResult Function() loading,
+    required TResult Function(
+            String imageUrl,
+            List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)
+        element,
   }) {
-    return initial();
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
   }) {
-    return initial?.call();
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -1395,39 +2047,39 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PatternView value) pattern,
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ElementView value) element,
   }) {
-    return initial(this);
+    return loading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
   }) {
-    return initial?.call(this);
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements PatternElementState {
-  const factory _Initial() = _$_Initial;
+abstract class _Loading implements PatternElementState {
+  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
@@ -1435,7 +2087,10 @@ abstract class _$ElementViewCopyWith<$Res> {
   factory _$ElementViewCopyWith(
           _ElementView value, $Res Function(_ElementView) then) =
       __$ElementViewCopyWithImpl<$Res>;
-  $Res call({String imageUrl});
+  $Res call(
+      {String imageUrl,
+      List<ElementEntity> elementEntityList,
+      List<PatternEntity> patternEntityList});
 }
 
 /// @nodoc
@@ -1452,12 +2107,22 @@ class __$ElementViewCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imageUrl = freezed,
+    Object? elementEntityList = freezed,
+    Object? patternEntityList = freezed,
   }) {
     return _then(_ElementView(
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      elementEntityList: elementEntityList == freezed
+          ? _value.elementEntityList
+          : elementEntityList // ignore: cast_nullable_to_non_nullable
+              as List<ElementEntity>,
+      patternEntityList: patternEntityList == freezed
+          ? _value.patternEntityList
+          : patternEntityList // ignore: cast_nullable_to_non_nullable
+              as List<PatternEntity>,
     ));
   }
 }
@@ -1465,14 +2130,21 @@ class __$ElementViewCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ElementView implements _ElementView {
-  const _$_ElementView({required this.imageUrl});
+  const _$_ElementView(
+      {required this.imageUrl,
+      required this.elementEntityList,
+      required this.patternEntityList});
 
   @override
   final String imageUrl;
+  @override
+  final List<ElementEntity> elementEntityList;
+  @override
+  final List<PatternEntity> patternEntityList;
 
   @override
   String toString() {
-    return 'PatternElementState.element(imageUrl: $imageUrl)';
+    return 'PatternElementState.element(imageUrl: $imageUrl, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList)';
   }
 
   @override
@@ -1480,12 +2152,19 @@ class _$_ElementView implements _ElementView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ElementView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.elementEntityList, elementEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.patternEntityList, patternEntityList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageUrl));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(elementEntityList),
+      const DeepCollectionEquality().hash(patternEntityList));
 
   @JsonKey(ignore: true)
   @override
@@ -1495,33 +2174,49 @@ class _$_ElementView implements _ElementView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl) pattern,
-    required TResult Function() initial,
-    required TResult Function(String imageUrl) element,
+    required TResult Function(
+            String imageUrl,
+            List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)
+        pattern,
+    required TResult Function() loading,
+    required TResult Function(
+            String imageUrl,
+            List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)
+        element,
   }) {
-    return element(imageUrl);
+    return element(imageUrl, elementEntityList, patternEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
   }) {
-    return element?.call(imageUrl);
+    return element?.call(imageUrl, elementEntityList, patternEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl)? pattern,
-    TResult Function()? initial,
-    TResult Function(String imageUrl)? element,
+    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList)?
+        pattern,
+    TResult Function()? loading,
+    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+            List<PatternEntity> patternEntityList)?
+        element,
     required TResult orElse(),
   }) {
     if (element != null) {
-      return element(imageUrl);
+      return element(imageUrl, elementEntityList, patternEntityList);
     }
     return orElse();
   }
@@ -1530,7 +2225,7 @@ class _$_ElementView implements _ElementView {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PatternView value) pattern,
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ElementView value) element,
   }) {
     return element(this);
@@ -1540,7 +2235,7 @@ class _$_ElementView implements _ElementView {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
   }) {
     return element?.call(this);
@@ -1550,7 +2245,7 @@ class _$_ElementView implements _ElementView {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PatternView value)? pattern,
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ElementView value)? element,
     required TResult orElse(),
   }) {
@@ -1562,9 +2257,14 @@ class _$_ElementView implements _ElementView {
 }
 
 abstract class _ElementView implements PatternElementState {
-  const factory _ElementView({required String imageUrl}) = _$_ElementView;
+  const factory _ElementView(
+      {required String imageUrl,
+      required List<ElementEntity> elementEntityList,
+      required List<PatternEntity> patternEntityList}) = _$_ElementView;
 
   String get imageUrl;
+  List<ElementEntity> get elementEntityList;
+  List<PatternEntity> get patternEntityList;
   @JsonKey(ignore: true)
   _$ElementViewCopyWith<_ElementView> get copyWith =>
       throw _privateConstructorUsedError;
