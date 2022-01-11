@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.1"
+  drop_zone:
+    dependency: "direct main"
+    description:
+      name: drop_zone
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   enum_to_string:
     dependency: "direct main"
     description:
@@ -618,4 +625,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.14.0 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"
