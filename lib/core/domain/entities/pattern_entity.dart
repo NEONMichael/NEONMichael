@@ -12,8 +12,6 @@ class PatternEntity {
   }
 }
 
-
-
 class Onboarding extends PatternEntity {
   Onboarding({
     required final String header,

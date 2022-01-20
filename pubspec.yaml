@@ -15,6 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   enum_to_string: ^2.0.1
+  drop_zone: ^1.0.2
 
   # Logic  
   flutter_bloc: ^8.0.0
